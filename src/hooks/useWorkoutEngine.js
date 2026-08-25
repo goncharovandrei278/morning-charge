@@ -13,13 +13,18 @@ export function useWorkoutEngine(blocks, options = {}) {
   const blockDurationMs = block?.unit === 'time' ? block.seconds * 1000 : 0;
   const [remainingMs, setRemainingMs] = useState(blockDurationMs);
   const timingRef = useRef({ startedAt: Date.now(), pausedAccumMs: 0, pausedAt: null });
+  const soundEnabledRef = useRef(soundEnabled);
+
+  useEffect(() => {
+    soundEnabledRef.current = soundEnabled;
+  }, [soundEnabled]);
 
   useEffect(() => {
     timingRef.current = { startedAt: Date.now(), pausedAccumMs: 0, pausedAt: null };
     setRemainingMs(blockDurationMs);
-    if (block && soundEnabled) speak(block.name);
+    if (block && soundEnabledRef.current) speak(block.name);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.currentIndex, soundEnabled]);
+  }, [state.currentIndex]);
 
   useEffect(() => {
     requestWakeLock();
