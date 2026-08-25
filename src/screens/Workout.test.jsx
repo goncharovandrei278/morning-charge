@@ -16,6 +16,7 @@ function renderWorkout(query) {
   return render(
     <MemoryRouter initialEntries={[`/workout${query}`]}>
       <Routes>
+        <Route path="/" element={<div>Home Screen</div>} />
         <Route path="/workout" element={<Workout />} />
         <Route path="/complete" element={<div>Complete Screen</div>} />
       </Routes>
@@ -45,5 +46,20 @@ describe('Workout', () => {
       }
     }
     expect(screen.getByText('Complete Screen')).toBeInTheDocument();
+  });
+
+  test('redirects home when day param is out of range', () => {
+    renderWorkout('?day=9&duration=5');
+    expect(screen.getByText('Home Screen')).toBeInTheDocument();
+  });
+
+  test('redirects home when duration param is not an allowed value', () => {
+    renderWorkout('?day=0&duration=7');
+    expect(screen.getByText('Home Screen')).toBeInTheDocument();
+  });
+
+  test('redirects home when params are missing', () => {
+    renderWorkout('');
+    expect(screen.getByText('Home Screen')).toBeInTheDocument();
   });
 });

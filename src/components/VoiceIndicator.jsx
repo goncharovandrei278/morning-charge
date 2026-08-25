@@ -1,7 +1,7 @@
 import { isSpeechSupported } from '../engine/voice.js';
 
-function VoiceIndicator() {
-  if (!isSpeechSupported()) return null;
+function VoiceIndicator({ active = isSpeechSupported() }) {
+  if (!active) return null;
   return <p className="text-xs text-slate-500">🔊 Голосовой режим включён</p>;
 }
 

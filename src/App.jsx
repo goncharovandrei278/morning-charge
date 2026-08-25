@@ -1,9 +1,32 @@
-import { HashRouter, Routes, Route, NavLink } from 'react-router-dom';
+import { HashRouter, Routes, Route, NavLink, useLocation } from 'react-router-dom';
 import Home from './screens/Home.jsx';
 import Workout from './screens/Workout.jsx';
 import Complete from './screens/Complete.jsx';
 import Calendar from './screens/Calendar.jsx';
 import Settings from './screens/Settings.jsx';
+
+function navLinkClassName({ isActive }) {
+  return `text-sm ${isActive ? 'text-yellow-400 font-bold' : 'text-slate-100'}`;
+}
+
+function BottomNav() {
+  const location = useLocation();
+  if (location.pathname === '/workout') return null;
+
+  return (
+    <nav className="flex justify-around border-t border-slate-800 py-3">
+      <NavLink to="/" end className={navLinkClassName}>
+        Главная
+      </NavLink>
+      <NavLink to="/calendar" className={navLinkClassName}>
+        Календарь
+      </NavLink>
+      <NavLink to="/settings" className={navLinkClassName}>
+        Настройки
+      </NavLink>
+    </nav>
+  );
+}
 
 function App() {
   return (
@@ -18,17 +41,7 @@ function App() {
             <Route path="/settings" element={<Settings />} />
           </Routes>
         </main>
-        <nav className="flex justify-around border-t border-slate-800 py-3">
-          <NavLink to="/" end className="text-sm">
-            Главная
-          </NavLink>
-          <NavLink to="/calendar" className="text-sm">
-            Календарь
-          </NavLink>
-          <NavLink to="/settings" className="text-sm">
-            Настройки
-          </NavLink>
-        </nav>
+        <BottomNav />
       </div>
     </HashRouter>
   );

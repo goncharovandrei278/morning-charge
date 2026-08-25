@@ -6,7 +6,8 @@ import { requestWakeLock, releaseWakeLock, attachVisibilityReacquire } from '../
 
 const TICK_MS = 100;
 
-export function useWorkoutEngine(blocks) {
+export function useWorkoutEngine(blocks, options = {}) {
+  const { soundEnabled = true } = options;
   const [state, dispatch] = useReducer(workoutReducer, blocks, initWorkoutState);
   const block = currentBlock(state);
   const blockDurationMs = block?.unit === 'time' ? block.seconds * 1000 : 0;
@@ -16,9 +17,9 @@ export function useWorkoutEngine(blocks) {
   useEffect(() => {
     timingRef.current = { startedAt: Date.now(), pausedAccumMs: 0, pausedAt: null };
     setRemainingMs(blockDurationMs);
-    if (block) speak(block.name);
+    if (block && soundEnabled) speak(block.name);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.currentIndex]);
+  }, [state.currentIndex, soundEnabled]);
 
   useEffect(() => {
     requestWakeLock();
