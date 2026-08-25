@@ -1,5 +1,7 @@
 import { HashRouter, Routes, Route, NavLink } from 'react-router-dom';
 import Home from './screens/Home.jsx';
+import Workout from './screens/Workout.jsx';
+import Complete from './screens/Complete.jsx';
 
 function App() {
   return (
@@ -8,8 +10,8 @@ function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/workout" element={<div>Workout placeholder</div>} />
-            <Route path="/complete" element={<div>Complete placeholder</div>} />
+            <Route path="/workout" element={<Workout />} />
+            <Route path="/complete" element={<Complete />} />
             <Route path="/calendar" element={<div>Calendar placeholder</div>} />
             <Route path="/settings" element={<div>Settings placeholder</div>} />
           </Routes>
