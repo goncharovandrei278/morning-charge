@@ -1,0 +1,18 @@
+[
+  { "id": "jumping-jacks", "name": "Прыжки \"жумпинг джек\"", "bodyArea": "full-body", "unit": "time", "seconds": 30, "mediaUrl": "/media/jumping-jacks.png" },
+  { "id": "pushup", "name": "Отжимания", "bodyArea": "chest", "unit": "reps", "reps": 10, "estimatedSeconds": 30, "mediaUrl": "/media/pushup.png" },
+  { "id": "squat", "name": "Приседания", "bodyArea": "legs", "unit": "reps", "reps": 15, "estimatedSeconds": 35, "mediaUrl": "/media/squat.png" },
+  { "id": "plank", "name": "Планка", "bodyArea": "core", "unit": "time", "seconds": 30, "mediaUrl": "/media/plank.png" },
+  { "id": "mountain-climbers", "name": "Скалолаз", "bodyArea": "full-body", "unit": "time", "seconds": 30, "mediaUrl": "/media/mountain-climbers.png" },
+  { "id": "lunges", "name": "Выпады", "bodyArea": "legs", "unit": "reps", "reps": 10, "estimatedSeconds": 35, "mediaUrl": "/media/lunges.png" },
+  { "id": "shoulder-taps", "name": "Касания плеч в планке", "bodyArea": "core", "unit": "time", "seconds": 20, "mediaUrl": "/media/shoulder-taps.png" },
+  { "id": "superman", "name": "Супермен", "bodyArea": "back", "unit": "time", "seconds": 25, "mediaUrl": "/media/superman.png" },
+  { "id": "glute-bridge", "name": "Ягодичный мостик", "bodyArea": "legs", "unit": "reps", "reps": 15, "estimatedSeconds": 30, "mediaUrl": "/media/glute-bridge.png" },
+  { "id": "bicycle-crunches", "name": "Велосипед", "bodyArea": "core", "unit": "time", "seconds": 30, "mediaUrl": "/media/bicycle-crunches.png" },
+  { "id": "arm-circles", "name": "Круги руками", "bodyArea": "shoulders", "unit": "time", "seconds": 20, "mediaUrl": "/media/arm-circles.png" },
+  { "id": "high-knees", "name": "Бег с высоким подниманием колен", "bodyArea": "cardio", "unit": "time", "seconds": 30, "mediaUrl": "/media/high-knees.png" },
+  { "id": "side-plank", "name": "Боковая планка", "bodyArea": "core", "unit": "time", "seconds": 20, "mediaUrl": "/media/side-plank.png" },
+  { "id": "cat-cow", "name": "Кошка-корова", "bodyArea": "mobility", "unit": "time", "seconds": 20, "mediaUrl": "/media/cat-cow.png" },
+  { "id": "wall-sit", "name": "Стульчик у стены", "bodyArea": "legs", "unit": "time", "seconds": 30, "mediaUrl": "/media/wall-sit.png" },
+  { "id": "cobra-stretch", "name": "Растяжка \"кобра\"", "bodyArea": "back", "unit": "time", "seconds": 20, "mediaUrl": "/media/cobra-stretch.png" }
+]
