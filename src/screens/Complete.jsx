@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { recordCompletion, getAllCompletionDates } from '../storage/storage.js';
 import { computeStreak, toDateString } from '../engine/streak.js';
+import { pluralizeDays } from '../engine/pluralize.js';
 
 function Complete() {
   const [searchParams] = useSearchParams();
@@ -23,7 +24,7 @@ function Complete() {
       <h1 className="text-2xl font-bold">Готово!</h1>
       {streak !== null && (
         <p className="text-xl">
-          Стрик: {streak} {streak === 1 ? 'день' : 'дней'}
+          Стрик: {streak} {pluralizeDays(streak)}
         </p>
       )}
       <button

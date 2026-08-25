@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DurationPicker from '../components/DurationPicker.jsx';
-import { getSettings, saveSettings, getAllCompletionDates } from '../storage/storage.js';
-import { computeStreak } from '../engine/streak.js';
+import { getSettings, saveSettings } from '../storage/storage.js';
+import { useStreak } from '../hooks/useStreak.js';
+import { pluralizeDays } from '../engine/pluralize.js';
 import morningCharge from '../data/programs/morning-charge.json';
 
 function todayDayIndex() {
@@ -13,13 +14,12 @@ function todayDayIndex() {
 function Home() {
   const navigate = useNavigate();
   const [duration, setDuration] = useState(10);
-  const [streak, setStreak] = useState(0);
+  const streak = useStreak();
   const dayIndex = todayDayIndex();
   const day = morningCharge.days.find((d) => d.dayIndex === dayIndex);
 
   useEffect(() => {
     getSettings().then((s) => setDuration(s.defaultDuration));
-    getAllCompletionDates().then((dates) => setStreak(computeStreak(dates)));
   }, []);
 
   function handleDurationChange(next) {
@@ -35,7 +35,7 @@ function Home() {
     <div className="p-6 flex flex-col gap-6">
       <div>
         <p className="text-slate-400">
-          Стрик: {streak} {streak === 1 ? 'день' : 'дней'}
+          Стрик: {streak} {pluralizeDays(streak)}
         </p>
         <h1 className="text-2xl font-bold">{day.name}</h1>
       </div>
