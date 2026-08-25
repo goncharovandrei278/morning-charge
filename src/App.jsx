@@ -2,6 +2,8 @@ import { HashRouter, Routes, Route, NavLink } from 'react-router-dom';
 import Home from './screens/Home.jsx';
 import Workout from './screens/Workout.jsx';
 import Complete from './screens/Complete.jsx';
+import Calendar from './screens/Calendar.jsx';
+import Settings from './screens/Settings.jsx';
 
 function App() {
   return (
@@ -12,8 +14,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/workout" element={<Workout />} />
             <Route path="/complete" element={<Complete />} />
-            <Route path="/calendar" element={<div>Calendar placeholder</div>} />
-            <Route path="/settings" element={<div>Settings placeholder</div>} />
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </main>
         <nav className="flex justify-around border-t border-slate-800 py-3">
