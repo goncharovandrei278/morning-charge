@@ -24,6 +24,11 @@ export async function saveSettings(partial) {
 }
 
 export async function recordCompletion(date, duration) {
+  const existing = await db.completions.where('date').equals(date).first();
+  if (existing) {
+    await db.completions.update(existing.id, { duration, completedAt: Date.now() });
+    return;
+  }
   await db.completions.add({ date, duration, completedAt: Date.now() });
 }
 

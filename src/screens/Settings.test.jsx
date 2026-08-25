@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, test } from 'vitest';
 import { db } from '../storage/db.js';
@@ -19,7 +19,7 @@ describe('Settings', () => {
 
     await user.click(checkbox);
 
-    expect(checkbox).not.toBeChecked();
+    await waitFor(() => expect(checkbox).not.toBeChecked());
     const settings = await getSettings();
     expect(settings.soundEnabled).toBe(false);
   });
